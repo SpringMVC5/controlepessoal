@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Result</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Formulário</div>
+		<div class="panel-body">
+
+			<p>
+				O nome da tarefa é: <a th:text="${task.descricaoTarefa}"> </a>
+			</p>
+			<p></p>
+			<button>
+				<a href="/task">Retornar ao formulario</a>
+			</button>
+
+		</div>
+	</div>
+
+</body>
+</html>

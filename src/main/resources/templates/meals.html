@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projeto Spring 5</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<body>
+	<div class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading">Refeições</div>
+		<!-- 		<div class="panel-body"> -->
+		<!-- 		</div> -->
+
+		<table class="table" border="1">
+			<tr>
+				<th>Descrição</th>
+				<th>Quantidade Proteína</th>
+				<th>Quantidade Carbo</th>
+				<th>Quantidade Gordura</th>
+				<th>Horário Refeição</th>
+				<th>Variação Carbo</th>
+			</tr>
+			<tr th:each="meal : ${mealsList}">
+				<td th:text="${meal.description}"></td>
+				<td th:text="${meal.qtdProtein}"></td>
+				<td th:text="${meal.qtdCarb}"></td>
+				<td th:text="${meal.qtdFat}"></td>
+				<td th:text="${meal.dthrMeal}"></td>
+				<td th:text="${meal.carboDay}"></td>
+			</tr>
+		</table>
+
+		<div class="panel-footer">
+
+			<table class="table" border="1">
+				<td style="width: 555px">Total:</td>
+				<td style="width: 253px" th:text="${totalProteina}"></td>
+				<td style="width: 253px" th:text="${totalCarbo}"></td>
+				<td style="width: 650px"  th:text="${totalGordura}"></td>
+				<!-- 					<td th:text="${meal.qtdCarb}"></td> -->
+				<!-- 					<td th:text="${meal.dthrMeal}"></td> -->
+				<!-- 					<td th:text="${meal.carboDay}"></td> -->
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

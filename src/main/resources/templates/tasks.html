@@ -3,19 +3,29 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Projeto Spring 5</title>
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<th>Descricao</th>
-			<th>Data</th>
-			<th>Prioridade</th>
-		</tr>
-		<tr th:each="task : ${tasksList}">
-			<td th:text="${task.descricaoTarefa}"></td>
-			<td th:text="${task.dthrInclusao}"></td>
-			<td th:text="${task.prioridadeTarefa}"></td>
-		</tr>
-	</table>
+	<div class="panel panel-primary">
+		<!-- Default panel contents -->
+		<div class="panel-heading" >Tarefas Pendentes</div>
+<!-- 		<div class="panel-body"> -->
+<!-- 		</div> -->
+
+		<table class="table" border="1">
+			<tr>
+				<th>Descricao</th>
+				<th>Data</th>
+				<th>Prioridade</th>
+			</tr>
+			<tr th:each="task : ${tasksList}">
+				<td th:text="${task.descricaoTarefa}"></td>
+				<td th:text="${task.dthrInclusao}"></td>
+				<td th:text="${task.prioridadeTarefa}"></td>
+			</tr>
+		</table>
+
+	</div>
 </body>
 </html>

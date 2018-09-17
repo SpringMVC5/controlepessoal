@@ -19,15 +19,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="meals">Dieta	</a>
+				<a class="navbar-brand" href="meals">Dieta</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="highCarbMeals">Carbo Alto <span class="sr-only">(current)</span></a></li>
-					<li><a href="mediumCarbMeals">Carbo Médio</a></li>
+					<li class="active"><a href="highCarbMeals">Carbo Alto <span class="sr-only">(current)</span> </a></li>
+					<li><a href="mediumCarbMeals">Carbo Médio </a></li>
 					<li><a href="zeroCarbMeals">Carbo Zero</a></li>
 					<li><a href="manipulados">Manipulados</a></li>
 				</ul>
@@ -55,6 +55,8 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+
+	
 
 	<div class="panel panel-primary">
 		<!-- Default panel contents -->
@@ -96,84 +98,5 @@
 
 	</div>
 
-	<div class="panel panel-primary">
-		<!-- Default panel contents -->
-		<div class="panel-heading">Refeições Carbo Médio</div>
-		<!-- 		<div class="panel-body"> -->
-		<!-- 		</div> -->
-
-		<table class="table" border="1">
-			<tr>
-				<th>Descrição</th>
-				<th>Quantidade Proteína</th>
-				<th>Quantidade Carbo</th>
-				<th>Quantidade Gordura</th>
-				<th>Horário Refeição</th>
-				<th>Variação Carbo</th>
-			</tr>
-			<tr th:each="meal : ${mediumCarbMealList}">
-				<td th:text="${meal.description}"></td>
-				<td th:text="${meal.qtdProtein}"></td>
-				<td th:text="${meal.qtdCarb}"></td>
-				<td th:text="${meal.qtdFat}"></td>
-				<td th:text="${meal.dthrMeal}"></td>
-				<td th:text="${meal.carboDay}"></td>
-			</tr>
-		</table>
-
-		<div class="panel-footer">
-
-			<table class="table" border="1">
-				<td style="width: 555px">Total:</td>
-				<td style="width: 253px" th:text="${totalProteina}"></td>
-				<td style="width: 253px" th:text="${totalCarbo}"></td>
-				<td style="width: 650px" th:text="${totalGordura}"></td>
-				<!-- 					<td th:text="${meal.qtdCarb}"></td> -->
-				<!-- 					<td th:text="${meal.dthrMeal}"></td> -->
-				<!-- 					<td th:text="${meal.carboDay}"></td> -->
-			</table>
-		</div>
-
-	</div>
-
-	<div class="panel panel-primary">
-		<!-- Default panel contents -->
-		<div class="panel-heading">Refeições Carbo Zero</div>
-		<!-- 		<div class="panel-body"> -->
-		<!-- 		</div> -->
-
-		<table class="table" border="1">
-			<tr>
-				<th>Descrição</th>
-				<th>Quantidade Proteína</th>
-				<th>Quantidade Carbo</th>
-				<th>Quantidade Gordura</th>
-				<th>Horário Refeição</th>
-				<th>Variação Carbo</th>
-			</tr>
-			<tr th:each="meal : ${zeroCarbMealList}">
-				<td th:text="${meal.description}"></td>
-				<td th:text="${meal.qtdProtein}"></td>
-				<td th:text="${meal.qtdCarb}"></td>
-				<td th:text="${meal.qtdFat}"></td>
-				<td th:text="${meal.dthrMeal}"></td>
-				<td th:text="${meal.carboDay}"></td>
-			</tr>
-		</table>
-
-		<div class="panel-footer">
-
-			<table class="table" border="1">
-				<td style="width: 555px">Total:</td>
-				<td style="width: 253px" th:text="${totalProteina}"></td>
-				<td style="width: 253px" th:text="${totalCarbo}"></td>
-				<td style="width: 650px" th:text="${totalGordura}"></td>
-				<!-- 					<td th:text="${meal.qtdCarb}"></td> -->
-				<!-- 					<td th:text="${meal.dthrMeal}"></td> -->
-				<!-- 					<td th:text="${meal.carboDay}"></td> -->
-			</table>
-		</div>
-
-	</div>
 </body>
 </html>

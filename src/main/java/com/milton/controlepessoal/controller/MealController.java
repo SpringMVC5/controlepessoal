@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.milton.controlepessoal.entity.Meal;
 import com.milton.controlepessoal.service.MealService;
 
@@ -19,15 +20,54 @@ public class MealController {
 	@RequestMapping("meals")
 	public String listMeals(Model model) {
 		
-		List<Meal> listAllMeals = mealService.listAllMeals();
-		model.addAttribute("mealsList", listAllMeals);
+		List<Meal> listHighCarbMeal = mealService.listHighCarbMeal();
+		model.addAttribute("highCarbMealList", listHighCarbMeal);
 		
+		List<Meal> listMediumCarbMeal = mealService.listMediumCarbMeal();
+		model.addAttribute("mediumCarbMealList", listMediumCarbMeal);
+		
+		List<Meal> listZeroCarbMeal = mealService.listZeroCarbMeal();
+		model.addAttribute("zeroCarbMealList", listZeroCarbMeal);
 		
 		model.addAttribute("totalProteina", mealService.totalProteina());
 		model.addAttribute("totalCarbo", mealService.totalCarbo());
 		model.addAttribute("totalGordura", mealService.totalGordura());
 		
 		return "meals";
+		
+	}
+	
+	@RequestMapping("mediumCarbMeals")
+	public String mediumCarbMeals(Model model) {
+		
+		List<Meal> listMediumCarbMeal = mealService.listMediumCarbMeal();
+		
+		model.addAttribute("mediumCarbMealList", listMediumCarbMeal);
+		
+		return "mediumCarbMeal";
+		
+	}
+	
+	@RequestMapping("highCarbMeals")
+	public String highCarbMeals(Model model) {
+		
+		List<Meal> listHighCarbMeal = mealService.listHighCarbMeal();
+		
+		model.addAttribute("highCarbMealList", listHighCarbMeal);
+		
+		return "highCarbMeal";
+		
+	}
+	
+	@RequestMapping("zeroCarbMeals")
+	public String zeroCarbMeals(Model model) {
+		
+		List<Meal> listZeroCarbMeal = mealService.listZeroCarbMeal();
+		
+		model.addAttribute("zeroCarbMealList", listZeroCarbMeal);
+		
+		return "zeroCarbMeal";
+		
 		
 	}
 

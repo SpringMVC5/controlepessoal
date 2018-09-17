@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.milton.controlepessoal.entity.CarboDay;
 import com.milton.controlepessoal.entity.Meal;
 import com.milton.controlepessoal.repository.MealRepository;
 
@@ -14,16 +15,28 @@ public class MealService {
 	@Autowired
 	private MealRepository mealRepository;
 	
-	public List<Meal> listAllMeals(){
+	public List<Meal> listHighCarbMeal(){
 		
-		List<Meal> meals = mealRepository.findAll();
+		List<Meal> meals = mealRepository.findByCarboDay(CarboDay.Alto);
 		
 		return meals;
 		
 	}
 	
+	public List<Meal> listMediumCarbMeal(){
+		List<Meal> mealsMediumCarb = mealRepository.findByCarboDay(CarboDay.Médio);
+		
+		return mealsMediumCarb;
+	}
+	
+	public List<Meal> listZeroCarbMeal(){
+		List<Meal> mealsZeroCarb = mealRepository.findByCarboDay(CarboDay.Zero);
+		
+		return mealsZeroCarb;
+	}
+	
 	public Integer totalProteina() {
-		List<Meal> total = listAllMeals();
+		List<Meal> total = listHighCarbMeal();
 		
 		Integer totalProteina = 0;
 		
@@ -37,7 +50,7 @@ public class MealService {
 	}
 	
 	public Integer totalCarbo() {
-		List<Meal> total = listAllMeals();
+		List<Meal> total = listHighCarbMeal();
 		
 		Integer totalCarbo= 0;
 		
@@ -49,7 +62,7 @@ public class MealService {
 	}
 	
 	public Integer totalGordura() {
-		List<Meal> total = listAllMeals();
+		List<Meal> total = listHighCarbMeal();
 		
 		Integer totalGordura= 0;
 		

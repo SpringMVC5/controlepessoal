@@ -42,6 +42,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 		createTask("Comprar Tênis para Trabalhar", LocalDateTime.now(), TaskPriority.Baixa);
 		createTask("Comprar Complexo Digestivo", LocalDateTime.now(), TaskPriority.Alta);
 		createTask("Comprar Leite e coisas do Guh", LocalDateTime.now(), TaskPriority.Alta);
+		createTask("Comprar coisas de Mercado", LocalDateTime.now(), TaskPriority.Alta);
 		createTask("Marcar consulta Médico Esportivo", LocalDateTime.now(), TaskPriority.Média);
 //		createTask("Transferir Dinheiro Paula", LocalDateTime.of(anoAtual, mesAtual, 10, 8, 0, 0), TaskPriority.Alta);
 //		createTask("Transferir Dinheiro Má Vitaminas", LocalDateTime.of(anoAtual, mesAtual, 10, 8, 0, 0), TaskPriority.Alta);

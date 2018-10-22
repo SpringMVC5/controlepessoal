@@ -34,13 +34,18 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		Task task = new Task("tarefa1", LocalDateTime.now(), TaskPriority.Baixa);
-		Task task2 = new Task("testandoTarefa", LocalDateTime.now(), TaskPriority.Média);
+		int mesAtual = LocalDateTime.now().getMonth().getValue();
+		int diaAtual = LocalDateTime.now().getDayOfMonth();
+		int anoAtual = LocalDateTime.now().getYear();
 		
-		taskRepository.save(task);
-		taskRepository.save(task2);
 		
-		System.out.println(task.getDescricaoTarefa());
+		createTask("Comprar Tênis para Trabalhar", LocalDateTime.now(), TaskPriority.Baixa);
+		createTask("Comprar Complexo Digestivo", LocalDateTime.now(), TaskPriority.Alta);
+		createTask("Comprar Leite e coisas do Guh", LocalDateTime.now(), TaskPriority.Alta);
+		createTask("Marcar consulta Médico Esportivo", LocalDateTime.now(), TaskPriority.Média);
+//		createTask("Transferir Dinheiro Paula", LocalDateTime.of(anoAtual, mesAtual, 10, 8, 0, 0), TaskPriority.Alta);
+//		createTask("Transferir Dinheiro Má Vitaminas", LocalDateTime.of(anoAtual, mesAtual, 10, 8, 0, 0), TaskPriority.Alta);
+		
 		
 
 		System.out.println("Deu certo!");
@@ -69,12 +74,22 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 		
 		//Carbo Zero
 
-	    createMeal("Omelete 6 ovos",40,0,0,LocalDateTime.of(2018, 9, 9, 11, 0, 0),CarboDay.Zero);
-	    createMeal("Carne, Frango ou Peixe",200,0,0,LocalDateTime.of(2018, 9, 9, 14, 0, 0),CarboDay.Zero);
-	    createMeal("Omelete 4 ovos,Carne, Peixe ou Frango",200,0,0,LocalDateTime.of(2018, 9, 9, 16, 30, 0),CarboDay.Zero);
-	    createMeal("Carne, Frango ou Peixe",200,0,0,LocalDateTime.of(2018, 9, 9, 18, 30, 0),CarboDay.Zero);
+	    createMeal("Omelete 6 ovos",40,0,0,LocalDateTime.of(2018, 9, 9, 7, 15, 0),CarboDay.Zero);
+	    createMeal("Carne, Frango ou Peixe",200,0,0,LocalDateTime.of(2018, 9, 9, 9, 50, 0),CarboDay.Zero);
+	    createMeal("Omelete 4 ovos,Carne, Peixe ou Frango",200,0,0,LocalDateTime.of(2018, 9, 9, 12, 20, 0),CarboDay.Zero);
+	    createMeal("Carne, Frango ou Peixe",200,0,0,LocalDateTime.of(2018, 9, 9, 16, 0, 0),CarboDay.Zero);
 	    createMeal("Carne, Frango ou Peixe",200,0,0,LocalDateTime.of(2018, 9, 9, 20, 30, 0),CarboDay.Zero);
-	    createMeal("Omeletse 6 ovos",40,0,30,LocalDateTime.of(2018, 9, 9, 23, 30, 0),CarboDay.Zero);
+	    createMeal("Omelete 6 ovos + Pasta de Amendoim",40,0,30,LocalDateTime.of(2018, 9, 9, 23, 0, 0),CarboDay.Zero);
+	    
+		//Off Season
+
+	    createMeal("Vitamina de Leite Desnatado, aveia, morango/Banana e 2,5 Scoops Whey",45,120,0,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 7, 30, 0),CarboDay.Off);
+	    createMeal("Omelete 6 ovos (3 gemas + aveia)",35,60,0,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 9, 50, 0),CarboDay.Off);
+	    createMeal("Arroz Branco + Frango + Legumes",250,400,0,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 12, 20, 0),CarboDay.Off);
+	    createMeal("Batata Doce / Batata Inglesa + 3 scoops whey",45,350,0,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 16, 0, 0),CarboDay.Off);
+	    createMeal("Pré Treino: Banana",0,3,0,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 18, 00, 0),CarboDay.Off);
+	    createMeal("Pós Treino: 2 Scoops whey + Arroz Branco e Carne Vermelha",30,400,30,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 21, 30, 0),CarboDay.Off);
+	    createMeal("Pasta de Amendoim",0,0,30,LocalDateTime.of(anoAtual, mesAtual, diaAtual, 22, 0, 0),CarboDay.Off);
 		
 		// Busca utilizando métodos prontos da JPA, no caso o findBy*NomeAtributo
 		List<Meal> findByCarboDay = mealRepository.findByCarboDay(CarboDay.Alto);
@@ -83,9 +98,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 		}
 		
 		// Popular Manipulados
-		int mesAtual = LocalDateTime.now().getMonth().getValue();
-		int diaAtual = LocalDateTime.now().getDayOfMonth();
-		System.out.println(diaAtual);
 		
 		
 		createManipulados("Cafeína", 1, 200, LocalDateTime.of (2018, mesAtual, diaAtual, 7, 30, 0));
@@ -117,5 +129,15 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 		
 		
 	}
+
+	public void createTask(String descTarefa, LocalDateTime dthrTarefa, TaskPriority taskPriority) {
+		
+		Task task = new Task(descTarefa, dthrTarefa, taskPriority);
+		
+		taskRepository.save(task);
+		
+	}
+	
+	
 
 }

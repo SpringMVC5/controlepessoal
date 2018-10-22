@@ -26,11 +26,14 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="highCarbMeals">Carbo Alto </a></li>
+					<li><a href="highCarbMeals">Carbo Alto <span
+							class="sr-only">(current)</span>
+					</a></li>
 					<li><a href="mediumCarbMeals">Carbo Médio </a></li>
-					<li class="active"><a href="zeroCarbMeals">Carbo Zero</a></li>
+					<li><a href="zeroCarbMeals">Carbo Zero</a></li>
 					<li><a href="manipulados">Manipulados</a></li>
-					<li><a href="offMeals">Off Season</a></li>
+					<li class="active"><a href="offMeals">Off Season</a></li>
+
 				</ul>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
@@ -61,7 +64,7 @@
 
 	<div class="panel panel-primary">
 		<!-- Default panel contents -->
-		<div class="panel-heading">Refeições Carbo Zero</div>
+		<div class="panel-heading">Refeições Off Season</div>
 		<!-- 		<div class="panel-body"> -->
 		<!-- 		</div> -->
 
@@ -74,7 +77,7 @@
 				<th>Horário Refeição</th>
 				<th>Variação Carbo</th>
 			</tr>
-			<tr th:each="meal : ${zeroCarbMealList}">
+			<tr th:each="meal : ${offMealList}">
 				<td th:text="${meal.description}"></td>
 				<td th:text="${meal.qtdProtein}"></td>
 				<td th:text="${meal.qtdCarb}"></td>

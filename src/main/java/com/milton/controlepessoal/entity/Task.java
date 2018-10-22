@@ -28,6 +28,48 @@ public class Task {
 	public String toString() {
 		return id +  " " + descricaoTarefa + " " + dthrInclusao + " " + prioridadeTarefa;
 	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descricaoTarefa == null) ? 0 : descricaoTarefa.hashCode());
+		result = prime * result + ((dthrInclusao == null) ? 0 : dthrInclusao.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((prioridadeTarefa == null) ? 0 : prioridadeTarefa.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Task other = (Task) obj;
+		if (descricaoTarefa == null) {
+			if (other.descricaoTarefa != null)
+				return false;
+		} else if (!descricaoTarefa.equals(other.descricaoTarefa))
+			return false;
+		if (dthrInclusao == null) {
+			if (other.dthrInclusao != null)
+				return false;
+		} else if (!dthrInclusao.equals(other.dthrInclusao))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (prioridadeTarefa != other.prioridadeTarefa)
+			return false;
+		return true;
+	}
 
 	public Long getId() {
 		return id;

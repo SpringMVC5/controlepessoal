@@ -35,6 +35,12 @@ public class MealService {
 		return mealsZeroCarb;
 	}
 	
+	public List<Meal> listOffMeal(){
+		List<Meal> mealsOff = mealRepository.findByCarboDay(CarboDay.Off);
+		
+		return mealsOff;
+	}
+	
 	public Integer totalProteina() {
 		List<Meal> total = listHighCarbMeal();
 		
